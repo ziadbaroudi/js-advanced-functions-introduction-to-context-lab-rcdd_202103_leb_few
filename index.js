@@ -56,7 +56,11 @@ function hoursWorkedOnDate(record, date){
 
 function wagesEarnedOnDate(record, date){
   let PayOwed = hoursWorkedOnDate(record,date) * record.payPerHour
+
   return parseInt(PayOwed)
+
+  return PayOwed
+
 }
 
 function allWagesFor (record){
@@ -64,6 +68,7 @@ function allWagesFor (record){
   let PayOwedAll = availableDates.reduce((a,c) =>{
   return (a + wagesEarnedOnDate(record,c))
   },0)
+
   return parseInt(PayOwedAll)
 }
 
@@ -77,4 +82,6 @@ function calculatePayroll(Array){
   return Array.reduce((a,c)=>{
     return a + allWagesFor(c)
   },0)
+  return PayOwedAll
+
 }
